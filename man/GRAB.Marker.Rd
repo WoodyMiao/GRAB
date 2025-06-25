@@ -84,22 +84,23 @@ Columns of \code{Marker}, \code{Info}, \code{AltFreq}, \code{AltCounts}, \code{M
 }
 }
 \examples{
-objNullFile = system.file("results", "objNull.RData", package = "GRAB")
+objNullFile <- system.file("results", "objNull.RData", package = "GRAB")
 load(objNullFile)
-class(objNull)    # "POLMM_NULL_Model", that indicates an object from POLMM method.
+class(objNull) # "POLMM_NULL_Model", that indicates an object from POLMM method.
 
-OutputDir = system.file("results", package = "GRAB")
-OutputFile = paste0(OutputDir, "/simuOUTPUT.txt")
-GenoFile = system.file("extdata", "simuPLINK.bed", package = "GRAB")
+OutputDir <- system.file("results", package = "GRAB")
+OutputFile <- paste0(OutputDir, "/simuOUTPUT.txt")
+GenoFile <- system.file("extdata", "simuPLINK.bed", package = "GRAB")
 
 ## make sure the output files does not exist at first
 file.remove(OutputFile)
 file.remove(paste0(OutputFile, ".index"))
 
 GRAB.Marker(objNull,
-            GenoFile = GenoFile,
-            OutputFile = OutputFile)
-            
+  GenoFile = GenoFile,
+  OutputFile = OutputFile
+)
+
 data.table::fread(OutputFile)
 
 ## additional columns of "zScore", "nSamplesInGroup", "AltCountsInGroup", "AltFreqInGroup"
@@ -108,9 +109,10 @@ data.table::fread(OutputFile)
 file.remove(OutputFile)
 file.remove(paste0(OutputFile, ".index"))
 GRAB.Marker(objNull,
-            GenoFile = GenoFile,
-            OutputFile = OutputFile,
-            control = list(outputColumns = c("beta", "seBeta", "zScore","nSamplesInGroup","AltCountsInGroup","AltFreqInGroup")))
+  GenoFile = GenoFile,
+  OutputFile = OutputFile,
+  control = list(outputColumns = c("beta", "seBeta", "zScore", "nSamplesInGroup", "AltCountsInGroup", "AltFreqInGroup"))
+)
 data.table::fread(OutputFile)
-            
+
 }

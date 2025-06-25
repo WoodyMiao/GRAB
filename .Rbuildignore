@@ -1,2 +1,14 @@
-^.*\.Rproj$
-^\.Rproj\.user$
+^\.vscode/
+^\.Rdata$
+^\.Renviron$
+^\.Rhistory$
+^\.index$
+^GRAB\.Rproj$
+^src/.*\.o$
+^src/.*\.dll$
+^src/.*\.so$
+^src/Makevars.win$
+^thirdParty/
+^inst/WtSPAG/
+^inst/grab.R$
+^[^/]+\.R$

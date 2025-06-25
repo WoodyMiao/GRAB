@@ -118,36 +118,39 @@ If dense GRM is used to adjust for sample relatedness, \code{GenoFile} should be
 \examples{
 # For POLMM method (ordinal categorical data analysis while adjusting for sample relatedness)
 # Step 1(a): fit a null model using a dense GRM (recommand using Linux OS)
-PhenoData = read.table(system.file("extdata", "simuPHENO.txt", package = "GRAB"), header = T)
-GenoFile = system.file("extdata", "simuPLINK.bed", package = "GRAB")
-obj.POLMM = GRAB.NullModel(factor(OrdinalPheno) ~ AGE + GENDER,
-                           data = PhenoData, subjData = IID, 
-                           method = "POLMM", traitType = "ordinal",
-                           GenoFile = GenoFile,
-                           control = list(showInfo = FALSE, LOCO = FALSE, tolTau = 0.2, tolBeta = 0.1))
+PhenoData <- read.table(system.file("extdata", "simuPHENO.txt", package = "GRAB"), header = T)
+GenoFile <- system.file("extdata", "simuPLINK.bed", package = "GRAB")
+obj.POLMM <- GRAB.NullModel(factor(OrdinalPheno) ~ AGE + GENDER,
+  data = PhenoData, subjData = IID,
+  method = "POLMM", traitType = "ordinal",
+  GenoFile = GenoFile,
+  control = list(showInfo = FALSE, LOCO = FALSE, tolTau = 0.2, tolBeta = 0.1)
+)
 
 names(obj.POLMM)
-obj.POLMM$tau    
+obj.POLMM$tau
 
 # Step 1(b): fit a null model using a sparse GRM (recommand using Linux OS)
 # First use getSparseGRM() function to get a sparse GRM file
-PhenoData = read.table(system.file("extdata", "simuPHENO.txt", package = "GRAB"), header = T)
-GenoFile = system.file("extdata", "simuPLINK.bed", package = "GRAB")
-SparseGRMFile =  system.file("SparseGRM", "SparseGRM.txt", package = "GRAB")
-obj.POLMM = GRAB.NullModel(factor(OrdinalPheno) ~ AGE + GENDER,
-                           data = PhenoData, subjData = IID, 
-                           method = "POLMM", traitType = "ordinal",
-                           GenoFile = GenoFile,
-                           SparseGRMFile = SparseGRMFile,
-                           control = list(showInfo = FALSE, LOCO = FALSE, tolTau = 0.2, tolBeta = 0.1))
+PhenoData <- read.table(system.file("extdata", "simuPHENO.txt", package = "GRAB"), header = T)
+GenoFile <- system.file("extdata", "simuPLINK.bed", package = "GRAB")
+SparseGRMFile <- system.file("SparseGRM", "SparseGRM.txt", package = "GRAB")
+obj.POLMM <- GRAB.NullModel(factor(OrdinalPheno) ~ AGE + GENDER,
+  data = PhenoData, subjData = IID,
+  method = "POLMM", traitType = "ordinal",
+  GenoFile = GenoFile,
+  SparseGRMFile = SparseGRMFile,
+  control = list(showInfo = FALSE, LOCO = FALSE, tolTau = 0.2, tolBeta = 0.1)
+)
 
 names(obj.POLMM)
-obj.POLMM$tau    
+obj.POLMM$tau
 
 # save(obj.POLMM, "obj.POLMM.RData")  # save the object for analysis in step 2
 
 # For SPACox method, check ?GRAB.SPACox.
 # For SPAmix method, check ?GRAB.SPAmix.
 # For SPAGRM method, check ?GRAB.SPAGRM
+# For WtCoxG method, check ?GRAB.WtCoxG
 
 }

@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "Makevars": "makefile",
+    "Makevars.win": "makefile",
+    "cstring": "cpp"
+  }
+}
